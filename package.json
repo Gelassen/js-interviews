@@ -1,0 +1,37 @@
+{
+  "name": "neuro-city",
+  "version": "1.0.0",
+  "description": "sample task",
+  "main": "index.js",
+  "dependencies": {
+    "config": "^3.2.3"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "express": "^4.17.1",
+    "jest": "^24.9.0",
+    "mysql": "^2.17.1",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "jest",
+    "install": "npm install --save-dev eslint && npm install --save-dev mysql && npm install --save-dev express && npm install --save-dev jest supertest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gelassen/js-interviews.git"
+  },
+  "author": "Dmitry.K",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gelassen/js-interviews/issues"
+  },
+  "homepage": "https://github.com/Gelassen/js-interviews#readme"
+}
