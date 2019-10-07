@@ -1,67 +1,33 @@
 
 var pool = require('../database');
+var tasks = require('../model/tasks')
 
-exports.all = function(req, res) {
-    pool.getConnection(function(err, connection) {
-        connection.query('SELECT * FROM tasks', function(query, rows, fields) {
-            res.send(JSON.stringify(rows))      
-            res.end()
-        })
-        connection.release()
-    });    
+exports.all = async function(req, res) {
+    let result = await tasks.getAll(req, res)
+    res.send(result)
+    res.end()    
 }
 
-exports.specific = function(req, res) {
-    pool.getConnection(function(err, connection) {
-        connection.query(
-            'SELECT * FROM tasks WHERE id = ?', 
-            [pool.escape(req.params.id)], 
-            function(query, rows, fields) {
-                res.send(JSON.stringify(rows))
-                res.end()
-            }
-        )
-        connection.release()
-    });
+exports.specific = async function(req, res) {
+    let result = await tasks.getSpecific(req, res)
+    res.send(result)
+    res.end()    
 }
 
-exports.create = function(req, res) {
-    pool.getConnection(function(err, connection) {
-        var body = req.body
-        connection.query(
-            'INSERT INTO tasks SET id = ?, name = ?, status = ?', 
-            [pool.escape(body.id), pool.escape(body.name), pool.escape(body.status)], 
-            function(query, rows, fields) {
-                res.send(JSON.stringify(rows))        
-                res.end()
-            }
-        )
-        connection.release()
-    });
+exports.create = async function(req, res) {
+    let result = await tasks.create(req, res)
+    res.send(result)
+    res.end()    
 }
 
-exports.edit = function(req, res) {
-    pool.getConnection(function(err, connection) {
-        connection.query(
-            'UPDATE tasks SET name = ?, status = ? WHERE id = ?', 
-            [pool.escape(req.body.name), pool.escape(req.body.status), pool.escape(req.body.id)], 
-            function(query, rows, fields) {
-                res.send(JSON.stringify(rows))        
-                res.end()
-            }
-        )
-        connection.release()
-    });
+exports.edit = async function(req, res) {
+    let result = await tasks.edit(req, res)
+    res.send(result)
+    res.end()    
 }
 
-exports.delete = function(req, res) {
-    connection.query(
-        'DELETE FROM tasks WHERE id = ?', 
-        [pool.escape(req.body.id)], 
-        function(query, rows, fields) {
-            res.send('Row has been deleted')
-            res.end()
-        }
-    )
-    connection.release()
+exports.delete = async function(req, res) {
+    let result = await tasks.delete(req, res)
+    res.send(result)
+    res.end()    
 }
