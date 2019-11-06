@@ -1,0 +1,29 @@
+{
+  "name": "quantory",
+  "version": "1.0.0",
+  "description": "test task",
+  "main": "index.js",
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gelassen/js-interviews.git"
+  },
+  "author": "Gelassen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gelassen/js-interviews/issues"
+  },
+  "homepage": "https://github.com/Gelassen/js-interviews#readme",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "jest": "^24.9.0"
+  }
+}
