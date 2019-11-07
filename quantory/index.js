@@ -1,14 +1,17 @@
 module.exports = {
     
     flatten: function flatten(arr, depth = Number.MAX_SAFE_INTEGER) {
-        var result = new Array();
-        try {
-            var depthObj = {depth: depth};
-            this.recursiveUntangling(arr, result, depthObj);        
-        } catch(ex) {
-            console.log("Failed to process data", ex);
-        }
-        return result
+        return new Promise((resolve) => {
+            try {
+                var result = new Array();
+                var depthObj = {depth: depth};
+                result = this.recursiveUntangling(arr, result, depthObj);
+                resolve(JSON.stringify({result: result}));       
+            } catch(ex) {
+                console.log("Failed to process data", ex);
+                resolve(JSON.stringify({result: "Failed to process data"}));
+            }
+        });
     },
 
     recursiveUntangling: function(arr, result, depthObj) {
